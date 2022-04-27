@@ -8,6 +8,7 @@ const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
 const cors = require("cors");
+const { response } = require("express");
 
 const app = express();
 dotenv.config();
@@ -25,6 +26,10 @@ mongoose
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/api/test", (req, res) => {
+    res.status(200).send("test success");
+});
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
